@@ -1,0 +1,25 @@
+@import "tailwindcss";
+
+@theme {
+  --color-marvel-red: #e62429;
+  --color-marvel-black: #151515;
+}
+
+body {
+  @apply bg-white text-zinc-900 m-0;
+  font-family: 'Arial Narrow', sans-serif;
+}
+
+@utility no-scrollbar {
+  &::-webkit-scrollbar { display: none; }
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+@utility marvel-clip {
+  clip-path: polygon(0 0, 100% 0, 100% 90%, 90% 100%, 0 100%);
+}
+
+@utility red-corner {
+  clip-path: polygon(100% 0, 0% 100%, 100% 100%);
+}
