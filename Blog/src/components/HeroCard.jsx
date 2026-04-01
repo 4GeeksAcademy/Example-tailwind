@@ -7,9 +7,13 @@ export const HeroCard = ({ hero }) => {
 
   return (
     <div className="min-w-[170px] max-w-[170px] group/card snap-start">
-      <div className="h-[230px] overflow-hidden relative marvel-clip bg-zinc-900">
+      <div className="h-[230px] overflow-hidden relative bg-zinc-900">
         <Link to={`/details/${hero.id}`}>
-          <img src={hero.images.sm} className="w-full h-full object-cover transition-transform duration-500 group-hover/card:scale-110" alt={hero.name} />
+          <img
+            src={hero.images.sm}
+            className="w-full h-full object-cover transition-transform duration-500 group-hover/card:scale-110"
+            alt={hero.name}
+          />
         </Link>
       </div>
       <div className="bg-marvel-black p-4 h-28 relative flex justify-between items-start">

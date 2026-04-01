@@ -25,7 +25,7 @@ export const Characters = () => {
   return (
     <main className="pb-20 bg-white">
       <div className="bg-marvel-black py-16 mb-12 text-center text-white italic">
-        <h1 className="text-5xl font-black uppercase tracking-tighter">Marvel <span className="text-marvel-red underline">Database</span></h1>
+        <h1 className="text-5xl font-black uppercase tracking-tighter">Freak <span className="text-marvel-red underline">Database</span></h1>
       </div>
       <Carousel title="Marvel" items={data.marvel} />
       <Carousel title="DC" items={data.dc} />

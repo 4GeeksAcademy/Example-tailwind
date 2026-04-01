@@ -4,7 +4,10 @@ const AppContext = createContext();
 
 export const AppProvider = ({ children }) => {
   const [data, setData] = useState({ marvel: [], dc: [], others: [] });
-  const [favorites, setFavorites] = useState([]);
+  const [favorites, setFavorites] = useState(() => {
+    const saved = localStorage.getItem("favorites");
+    return saved ? JSON.parse(saved) : [];
+  });
 
   const fetchHeroes = async () => {
     try {
@@ -27,8 +30,6 @@ export const AppProvider = ({ children }) => {
 
   useEffect(() => {
     fetchHeroes();
-    const saved = localStorage.getItem("favorites");
-    if (saved) setFavorites(JSON.parse(saved));
   }, []);
 
   useEffect(() => {
@@ -36,8 +37,10 @@ export const AppProvider = ({ children }) => {
   }, [favorites]);
 
   const toggleFavorite = (item) => {
-    const isFav = favorites.some(f => f.id === item.id);
-    setFavorites(isFav ? favorites.filter(f => f.id !== item.id) : [...favorites, item]);
+    setFavorites((prev) => {
+      const isFav = prev.some((f) => f.id === item.id);
+      return isFav ? prev.filter((f) => f.id !== item.id) : [...prev, item];
+    });
   };
 
   return (
